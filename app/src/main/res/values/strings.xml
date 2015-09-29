@@ -10,6 +10,7 @@
 
     <string-array name="itemTypes">
         <item>Garage</item>
-        <item>New Appliances</item>
+        <item>Spacious kitchen</item>
+        <item>New appliances</item>
     </string-array>
 </resources>
