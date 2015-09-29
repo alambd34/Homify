@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="edit_message">Enter a mesage</string>
+    <string name="button_send">Button send</string>
+    <string name="string_preferences">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">My Message</string>
+
+
+
+    <string-array name="itemTypes">
+        <item>Garage</item>
+        <item>New Appliances</item>
+    </string-array>
+</resources>
