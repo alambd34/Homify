@@ -1,4 +1,4 @@
-package com.android.homify;
+package com.android.homify.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestApp</string>
+    <string name="app_name">Homify</string>
     <string name="edit_message">Enter a mesage</string>
     <string name="button_send">Button send</string>
     <string name="string_preferences">Settings</string>
