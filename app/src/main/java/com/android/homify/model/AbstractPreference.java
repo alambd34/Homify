@@ -7,7 +7,7 @@ public abstract class AbstractPreference {
 
     private long id;
 
-    private String code;
+//    private String code;
 
     private String description;
 
@@ -15,14 +15,14 @@ public abstract class AbstractPreference {
 
     private Boolean checked;
 
-    public AbstractPreference(String code, String description, String name, Boolean checked) {
-        this.code = code;
+    public AbstractPreference(String description, String name, Boolean checked) {
+//        this.code = code;
         this.description = description;
         this.name = name;
         this.checked = checked;
     }
 
-    public Boolean getChecked() {
+    public Boolean isChecked() {
         return checked;
     }
 
@@ -38,13 +38,13 @@ public abstract class AbstractPreference {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
 
     public String getDescription() {
         return description;

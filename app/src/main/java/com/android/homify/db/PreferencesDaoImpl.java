@@ -28,6 +28,7 @@ public class PreferencesDaoImpl implements PreferenceDao {
 
     public void open() {
         database = dbHelper.getWritableDatabase();
+        //this.dbHelper.onCreate(database);
     }
 
     public void close() {
@@ -48,8 +49,8 @@ public class PreferencesDaoImpl implements PreferenceDao {
     public Preference addPreference(Preference pref) {
 
         ContentValues values = new ContentValues();
-        values.put(HomifySQLiteHelper.COLUMN_CHECKED, pref.getChecked());
-        values.put(HomifySQLiteHelper.COLUMN_CODE, pref.getCode());
+        values.put(HomifySQLiteHelper.COLUMN_CHECKED, pref.isChecked());
+        //values.put(HomifySQLiteHelper.COLUMN_CODE, pref.getCode());
         values.put(HomifySQLiteHelper.COLUMN_DESCRIPTION, pref.getDescription());
         values.put(HomifySQLiteHelper.COLUMN_NAME, pref.getName());
 
@@ -69,7 +70,7 @@ public class PreferencesDaoImpl implements PreferenceDao {
      */
     private Preference cursorToPreference(Cursor cursor) {
 
-        Preference preference = new PreferenceBuilder(cursor.getString(2),cursor.getString(4)).build();//code + name
+        Preference preference = new PreferenceBuilder(cursor.getString(4)).build();//code + name
 
         preference.setId(cursor.getLong(0));//_id
         preference.setChecked(cursor.getInt(1) != 0);//checked
