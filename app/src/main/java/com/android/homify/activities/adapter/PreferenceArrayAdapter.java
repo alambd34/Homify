@@ -25,12 +25,11 @@ public class PreferenceArrayAdapter extends ArrayAdapter<Preference> {
 
     private PreferencesDaoImpl preferencesDao;
 
-    public PreferenceArrayAdapter(Context context, List<Preference> planetList) {
-        super(context, R.layout.simplerow, R.id.rowTextView, planetList);
+    public PreferenceArrayAdapter(Context context, List<Preference> preferencesList, PreferencesDaoImpl preferencesDao) {
+        super(context, R.layout.simplerow, R.id.rowTextView, preferencesList);
         //Cache the LayoutInflate to avoid asking for a new one each time.
         inflater = LayoutInflater.from(context);
-        this.preferencesDao = new PreferencesDaoImpl(context);
-        this.preferencesDao.open();
+        this.preferencesDao = preferencesDao;
     }
 
     @Override

@@ -15,11 +15,22 @@ public abstract class AbstractPreference {
 
     private Boolean checked;
 
-    public AbstractPreference(String description, String name, Boolean checked) {
+    private String type;
+
+    public AbstractPreference(String description, String name, Boolean checked, String type) {
 //        this.code = code;
         this.description = description;
         this.name = name;
         this.checked = checked;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Boolean isChecked() {

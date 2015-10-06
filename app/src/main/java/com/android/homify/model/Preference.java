@@ -6,7 +6,7 @@ package com.android.homify.model;
 public class Preference extends AbstractPreference {
 
     public Preference(PreferenceBuilder preferenceBuilder) {
-        super(preferenceBuilder.getDescription(), preferenceBuilder.getName(), preferenceBuilder.getChecked());
+        super(preferenceBuilder.getDescription(), preferenceBuilder.getName(), preferenceBuilder.getChecked(), preferenceBuilder.getType());
     }
 
     public void toggleChecked() {

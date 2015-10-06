@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface PreferenceDao {
 
-    public List<Preference> getAll();
+    List<Preference> getAll();
 
-    public Preference getPreferenceByType(String type);
-    
-    public Preference addPreference(Preference pref);
+    List<Preference> getPreferencesByType(String type);
+
+    Preference addPreference(Preference pref);
 }

@@ -2,12 +2,14 @@ package com.android.homify.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.android.homify.model.Preference;
 import com.android.homify.model.PreferenceBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +17,9 @@ import java.util.List;
  */
 public class PreferencesDaoImpl implements PreferenceDao {
 
-    private String[] allColumns = { HomifySQLiteHelper.COLUMN_ID,
-            HomifySQLiteHelper.COLUMN_CHECKED,HomifySQLiteHelper.COLUMN_CODE,
-            HomifySQLiteHelper.COLUMN_DESCRIPTION,HomifySQLiteHelper.COLUMN_NAME };
+    private String[] allColumns = {HomifySQLiteHelper.COLUMN_TYPE,//0
+            HomifySQLiteHelper.COLUMN_CHECKED, HomifySQLiteHelper.COLUMN_CODE,//1,2
+            HomifySQLiteHelper.COLUMN_DESCRIPTION, HomifySQLiteHelper.COLUMN_NAME};//3,4
     // Database fields
     private SQLiteDatabase database;
     private HomifySQLiteHelper dbHelper;
@@ -26,11 +28,10 @@ public class PreferencesDaoImpl implements PreferenceDao {
         dbHelper = HomifySQLiteHelper.getInstance(context);
     }
 
-    public void open() {
+    public void open(Resources resources) {
         database = dbHelper.getWritableDatabase();
-        //this.dbHelper.onCreate(database);
-    }
 
+    }
     public void close() {
         dbHelper.close();
     }
@@ -41,21 +42,34 @@ public class PreferencesDaoImpl implements PreferenceDao {
     }
 
     @Override
-    public Preference getPreferenceByType(String type) {
-        return null;
+    public List<Preference> getPreferencesByType(String type) {
+
+        Cursor cursor = database.query(HomifySQLiteHelper.TABLE_PREFERENCES, allColumns, HomifySQLiteHelper.COLUMN_TYPE + " = ?", new String[]{type},
+                null, null, HomifySQLiteHelper.COLUMN_NAME);
+
+        List<Preference> preferences = new ArrayList<>();
+        for (boolean hasItem = cursor.moveToFirst(); hasItem; hasItem = cursor.moveToNext()) {
+            Preference newPreference = cursorToPreference(cursor);
+            preferences.add(newPreference);
+        }
+
+        cursor.close();
+        return preferences;
     }
 
     @Override
     public Preference addPreference(Preference pref) {
 
         ContentValues values = new ContentValues();
+
         values.put(HomifySQLiteHelper.COLUMN_CHECKED, pref.isChecked());
-        //values.put(HomifySQLiteHelper.COLUMN_CODE, pref.getCode());
+        values.put(HomifySQLiteHelper.COLUMN_TYPE, pref.getType());
         values.put(HomifySQLiteHelper.COLUMN_DESCRIPTION, pref.getDescription());
         values.put(HomifySQLiteHelper.COLUMN_NAME, pref.getName());
 
-        long insertId = database.insert(HomifySQLiteHelper.TABLE_PREFERENCES, null, values);
-        Cursor cursor = database.query(HomifySQLiteHelper.TABLE_PREFERENCES, allColumns, HomifySQLiteHelper.COLUMN_ID + " = " + insertId, null,
+        long insertId = database.replace(HomifySQLiteHelper.TABLE_PREFERENCES, null, values);
+        Cursor cursor = database.query(HomifySQLiteHelper.TABLE_PREFERENCES, allColumns,
+                HomifySQLiteHelper.COLUMN_NAME + " = ? AND " + HomifySQLiteHelper.COLUMN_TYPE + " = ? ", new String[]{pref.getName(), pref.getType()},
                 null, null, null);
         cursor.moveToFirst();
 
@@ -70,7 +84,7 @@ public class PreferencesDaoImpl implements PreferenceDao {
      */
     private Preference cursorToPreference(Cursor cursor) {
 
-        Preference preference = new PreferenceBuilder(cursor.getString(4)).build();//code + name
+        Preference preference = new PreferenceBuilder(cursor.getString(4), cursor.getString(0)).build();//name + type
 
         preference.setId(cursor.getLong(0));//_id
         preference.setChecked(cursor.getInt(1) != 0);//checked

@@ -6,11 +6,13 @@ public class PreferenceBuilder {
     private String description;//optional
     private String name;//required
     private Boolean checked;
+    private String type;
 
 
-    public PreferenceBuilder(String name) {
+    public PreferenceBuilder(String name, String type) {
         //this.code = code;
         this.name = name;
+        this.type = type;
     }
 
     public Preference build() {
@@ -29,6 +31,11 @@ public class PreferenceBuilder {
 //    public String getCode() {
 //        return code;
 //    }
+
+
+    public String getType() {
+        return type;
+    }
 
     public String getName() {
         return name;
