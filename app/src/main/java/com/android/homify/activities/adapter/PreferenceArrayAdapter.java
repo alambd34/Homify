@@ -8,13 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.android.homify.R;
 import com.android.homify.db.PreferencesDaoImpl;
 import com.android.homify.model.Preference;
 import com.android.homify.model.PreferenceViewHolder;
 
 import java.util.List;
 
-import home.test.com.homilfy.R;
 
 /**
  * Created by nickyska on 9/30/2015.

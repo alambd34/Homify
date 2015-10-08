@@ -2,11 +2,14 @@ package com.android.homify.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.android.homify.R;
 import com.android.homify.activities.adapter.PreferenceArrayAdapter;
 import com.android.homify.db.PreferencesDaoImpl;
 import com.android.homify.model.Preference;
@@ -14,7 +17,6 @@ import com.android.homify.model.PreferenceViewHolder;
 
 import java.util.List;
 
-import home.test.com.homilfy.R;
 
 public class MainActivity extends Activity {
 
@@ -62,6 +64,14 @@ public class MainActivity extends Activity {
 
         List<Preference> preferencesByType = this.preferencesDao.getPreferencesByType(USER_PREFERENCE);
         return preferencesByType;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_my, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
 

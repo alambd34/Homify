@@ -5,6 +5,8 @@
     <string name="string_preferences">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
+    <string name="search_label">Search</string>
+    <string name="search_hint">Search for preferences</string>
 
 
 

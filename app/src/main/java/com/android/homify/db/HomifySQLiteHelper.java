@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.android.homify.R;
 import com.android.homify.activities.MainActivity;
 import com.android.homify.model.Preference;
 import com.android.homify.model.PreferenceBuilder;
@@ -14,7 +15,6 @@ import com.android.homify.model.PreferenceBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import home.test.com.homilfy.R;
 
 /**
  * Created by nickyska on 9/29/2015.
