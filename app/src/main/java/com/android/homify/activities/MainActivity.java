@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.android.homify.R;
 import com.android.homify.activities.adapter.PreferenceArrayAdapter;
@@ -42,10 +40,6 @@ public class MainActivity extends Activity {
 
         mainListView = (ListView) findViewById(R.id.mainListView);
 
-        //setSearchViewListener(this.search);
-
-
-
         // When item is tapped, toggle checked properties of CheckBox and
         // Preference.
         mainListView
@@ -75,10 +69,8 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                // TODO Auto-generated method stub
-
-                Toast.makeText(getBaseContext(), String.valueOf(hasFocus),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getBaseContext(), String.valueOf(hasFocus),
+//                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -118,23 +110,6 @@ public class MainActivity extends Activity {
         setSearchViewListener(this.search);
         return super.onCreateOptionsMenu(menu);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                // search action
-                return true;
-        }
-
-        return false;
-    }
-
-    public Object onRetainNonConfigurationInstance() {
-        return preferences;
-    }
-
-
 
 }
 

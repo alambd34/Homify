@@ -56,7 +56,7 @@ public class PreferenceArrayAdapter extends ArrayAdapter<Preference> implements 
 
             convertView.setTag(new PreferenceViewHolder(textView, checkBox));
 
-            // If CheckBox is toggled, update the planet it is tagged with.
+            // If CheckBox is toggled, update the preference it is tagged with.
             checkBox.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
@@ -76,7 +76,7 @@ public class PreferenceArrayAdapter extends ArrayAdapter<Preference> implements 
 
         checkBox.setTag(preference);
 
-        // Display planet data
+        // Display preference data
         checkBox.setChecked(preference.isChecked());
         textView.setText(preference.getName());
 
