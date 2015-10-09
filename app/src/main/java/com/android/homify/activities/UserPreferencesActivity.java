@@ -18,7 +18,7 @@ import com.android.homify.model.PreferenceViewHolder;
 import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class UserPreferencesActivity extends Activity {
 
     public static final String USER_PREFERENCE = "user-preference";
     private ListView mainListView = null;

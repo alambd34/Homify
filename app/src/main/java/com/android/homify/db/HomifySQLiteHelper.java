@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.android.homify.R;
-import com.android.homify.activities.MainActivity;
+import com.android.homify.activities.UserPreferencesActivity;
 import com.android.homify.model.Preference;
 import com.android.homify.model.PreferenceBuilder;
 
@@ -98,7 +98,7 @@ public class HomifySQLiteHelper extends SQLiteOpenHelper {
         List<Preference> list = new ArrayList<>();
 
         for (String name : itemNames) {
-            list.add(new PreferenceBuilder(name, MainActivity.USER_PREFERENCE).setChecked(false).build());
+            list.add(new PreferenceBuilder(name, UserPreferencesActivity.USER_PREFERENCE).setChecked(false).build());
         }
 
         return list;
