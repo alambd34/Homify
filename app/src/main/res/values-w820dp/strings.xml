@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="set_preferences_string">Set preferences</string>
+    <string name="set_unit_preferences">Start homify</string>
+</resources>

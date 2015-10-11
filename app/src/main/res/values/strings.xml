@@ -7,7 +7,10 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="search_label">Search</string>
     <string name="search_hint">Search for preferences</string>
-
+    <string name="set_preferences_string">Set preferences</string>
+    <string name="set_unit_preferences">Start homify</string>
+    <string name="action_location_found">Get location</string>
+    <string name="address_string">Address</string>
 
 
     <string-array name="itemTypes">

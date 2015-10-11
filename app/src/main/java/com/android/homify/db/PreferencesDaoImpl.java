@@ -47,7 +47,7 @@ public class PreferencesDaoImpl implements PreferenceDao {
         Cursor cursor = database.query(HomifySQLiteHelper.TABLE_PREFERENCES, allColumns, HomifySQLiteHelper.COLUMN_TYPE + " = ?", new String[]{type},
                 null, null, HomifySQLiteHelper.COLUMN_NAME);
 
-        List<Preference> preferences = new ArrayList<>();
+        List<Preference> preferences = new ArrayList<Preference>();
         for (boolean hasItem = cursor.moveToFirst(); hasItem; hasItem = cursor.moveToNext()) {
             Preference newPreference = cursorToPreference(cursor);
             preferences.add(newPreference);

@@ -95,7 +95,7 @@ public class HomifySQLiteHelper extends SQLiteOpenHelper {
 
     private List<Preference> getHomePreferences(String[] itemNames) {
 
-        List<Preference> list = new ArrayList<>();
+        List<Preference> list = new ArrayList<Preference>();
 
         for (String name : itemNames) {
             list.add(new PreferenceBuilder(name, UserPreferencesActivity.USER_PREFERENCE).setChecked(false).build());
