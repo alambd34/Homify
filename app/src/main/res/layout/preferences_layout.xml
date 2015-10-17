@@ -4,18 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete_places"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/address_bar_id"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="fill_horizontal"
-            android:background="#3fbf00"
-            android:hint="@string/address_string" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/autocomplete_hint" />
 
     <ListView
         android:id="@+id/mainListView"
