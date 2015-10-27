@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.android.homify.Constants;
 import com.android.homify.R;
-import com.android.homify.activities.UserPreferencesActivity;
 import com.android.homify.model.Preference;
 import com.android.homify.model.PreferenceBuilder;
 
@@ -21,16 +21,26 @@ import java.util.List;
  */
 public class HomifySQLiteHelper extends SQLiteOpenHelper {
 
+    //PREFERENCES TABLE
     public static final String TABLE_PREFERENCES = "preferences";
+
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_CODE = "code";
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_CHECKED = "checked";
     public static final String COLUMN_TYPE = "type";
+    public static final String COLUMN_PLACE_ID = "place_id";
+
+
+    //ADDRESS TABLE
+    public static final String TABLE_ADDRESS = "address";
+    public static final String COLUMN_ADDRESS = "full_address";
+
+
 
     private static final String DATABASE_NAME = "homify.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 //    // Database creation sql statement
 //    private static final String DATABASE_CREATE = "create table "
 //            + TABLE_PREFERENCES + "(" + COLUMN_ID
@@ -38,10 +48,18 @@ public class HomifySQLiteHelper extends SQLiteOpenHelper {
 //            + " text , " + COLUMN_DESCRIPTION + " text, " + COLUMN_NAME + " text not null,"
 //            + COLUMN_CHECKED + " integer, " + COLUMN_TYPE + " text not null)";
 
-    private static final String DATABASE_CREATE = "create table "
+    private static final String CREATE_PREFERENCES_TABLE = "create table "
             + TABLE_PREFERENCES + "(" + COLUMN_CODE
             + " text , " + COLUMN_DESCRIPTION + " text, " + COLUMN_NAME + " text not null,"
-            + COLUMN_CHECKED + " integer, " + COLUMN_TYPE + " text not null, PRIMARY KEY ( " + COLUMN_NAME + "," + COLUMN_TYPE + "));";
+            + COLUMN_CHECKED + " integer, " + COLUMN_TYPE + " text not null,"
+            + COLUMN_PLACE_ID + " integer, PRIMARY KEY ( " + COLUMN_NAME + "," + COLUMN_TYPE + "));";
+
+
+    private static final String CREATE_ADDRESS_TABLE = "create table "
+            + TABLE_ADDRESS + "(" + COLUMN_ADDRESS
+            + " text , " + COLUMN_PLACE_ID + " integer, PRIMARY KEY ( " + COLUMN_PLACE_ID + "));";
+
+
     private static HomifySQLiteHelper sInstance;
     private static Resources resources;
 
@@ -65,7 +83,8 @@ public class HomifySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
 
-        database.execSQL(DATABASE_CREATE);
+        database.execSQL(CREATE_PREFERENCES_TABLE);
+        database.execSQL(CREATE_ADDRESS_TABLE);
 
         initialize(resources, database);
     }
@@ -98,7 +117,7 @@ public class HomifySQLiteHelper extends SQLiteOpenHelper {
         List<Preference> list = new ArrayList<Preference>();
 
         for (String name : itemNames) {
-            list.add(new PreferenceBuilder(name, UserPreferencesActivity.USER_PREFERENCE).setChecked(false).build());
+            list.add(new PreferenceBuilder(name, Constants.USER_PREFERENCE_TYPE).setChecked(false).build());
         }
 
         return list;

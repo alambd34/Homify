@@ -32,5 +32,13 @@ public class MainActivity extends Activity {
         startActivity(i);
         // close this activity
         finish();
+
+    }
+
+    public void startReviewActivity(View view) {
+        Intent i = new Intent(this, PreferencesReviewActivity.class);
+        startActivity(i);
+        // close this activity
+        finish();
     }
 }

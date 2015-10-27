@@ -1,5 +1,6 @@
 package com.android.homify.activities;
 
+import com.android.homify.Constants;
 import com.android.homify.R;
 import com.android.homify.model.Preference;
 
@@ -17,7 +18,7 @@ public class UserPreferencesActivity extends AbstarctPreferenceActivity {
     @Override
     public List<Preference> getPreferencesList() {
 
-        List<Preference> preferencesByType = this.preferencesDao.getPreferencesByType(USER_PREFERENCE);
+        List<Preference> preferencesByType = this.preferencesDao.getPreferencesByType(Constants.USER_PREFERENCE_TYPE);
         return preferencesByType;
     }
 }

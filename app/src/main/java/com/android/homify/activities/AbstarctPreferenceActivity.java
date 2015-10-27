@@ -22,7 +22,6 @@ import java.util.List;
  */
 public abstract class AbstarctPreferenceActivity extends Activity {
 
-    public static final String USER_PREFERENCE = "user-preference";
     protected PreferencesDaoImpl preferencesDao;
     private ListView mainListView = null;
     private List<Preference> preferences = null;
@@ -37,7 +36,7 @@ public abstract class AbstarctPreferenceActivity extends Activity {
         setContentView(R.layout.preferences_layout);
         // search = (SearchView) findViewById(R.action_bar_user.action_bar_user);
 
-        enableAddressBar();
+        //enableAddressBar();
 
         this.preferencesDao = new PreferencesDaoImpl(this);
         this.preferencesDao.open(getResources());
@@ -68,16 +67,16 @@ public abstract class AbstarctPreferenceActivity extends Activity {
     }
 
     //if from unit preferences screen no address bar should be present
-    protected void enableAddressBar() {
-
-        View addresbarTextView = findViewById(R.id.address_bar_id);
-        switch (getActionBarLayoutId()) {
-            case R.menu.action_bar_user:
-                addresbarTextView.setVisibility(View.GONE);
-            default:
-                addresbarTextView.setEnabled(true);
-        }
-    }
+//    protected void enableAddressBar() {
+//
+//        View addresbarTextView = findViewById(R.id.address_bar_id);
+//        switch (getActionBarLayoutId()) {
+//            case R.menu.action_bar_user:
+//                addresbarTextView.setVisibility(View.GONE);
+//            default:
+//                addresbarTextView.setEnabled(true);
+//        }
+//    }
 
     private void setSearchViewListener(SearchView searchView) {
 

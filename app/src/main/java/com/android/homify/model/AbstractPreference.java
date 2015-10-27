@@ -17,6 +17,10 @@ public abstract class AbstractPreference {
 
     private String type;
 
+    private Unit unit;
+
+
+
     public AbstractPreference(String description, String name, Boolean checked, String type) {
 //        this.code = code;
         this.description = description;
@@ -73,5 +77,12 @@ public abstract class AbstractPreference {
         this.name = name;
     }
 
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
 
 }

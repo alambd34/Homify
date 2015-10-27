@@ -20,5 +20,12 @@
         android:onClick="startUserreferenceActivity"
         android:text="@string/set_preferences_string" />
 
+    <Button
+        android:id="@+id/button_review_preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startReviewActivity"
+        android:text="@string/start_units_review_string" />
+
 
 </LinearLayout>

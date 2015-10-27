@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.android.homify.Constants;
 import com.android.homify.R;
 import com.android.homify.activities.adapter.PlaceAutocompleteAdapter;
 import com.android.homify.model.Preference;
@@ -66,8 +67,7 @@ public class UnitPreferenceActivity extends AbstarctPreferenceActivity
      * Callback for results from a Places Geo Data API query that shows the first place result in
      * the details view on screen.
      */
-    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
-            = new ResultCallback<PlaceBuffer>() {
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
         @Override
         public void onResult(PlaceBuffer places) {
             if (!places.getStatus().isSuccess()) {
@@ -151,12 +151,6 @@ public class UnitPreferenceActivity extends AbstarctPreferenceActivity
         // events. If your activity does not extend FragmentActivity, make sure to call connect()
         // and disconnect() explicitly.
         buildGoogleApiClient();
-//        mGoogleApiClient = new GoogleApiClient.Builder(this)
-//                //.enableAutoManage(this, 0 /* clientId */, this)
-//                .addApi(Places.GEO_DATA_API)
-//                .build();
-
-        //setContentView(R.layout.activity_main);
 
         // Retrieve the AutoCompleteTextView that will display Place suggestions.
         mAutocompleteView = (AutoCompleteTextView)
@@ -191,7 +185,7 @@ public class UnitPreferenceActivity extends AbstarctPreferenceActivity
         List<Preference> list = new ArrayList<Preference>();
 
         for (String name : itemNames) {
-            list.add(new PreferenceBuilder(name, UserPreferencesActivity.USER_PREFERENCE).setChecked(false).build());
+            list.add(new PreferenceBuilder(name, Constants.USER_PREFERENCE_TYPE).setChecked(false).build());
         }
 
         return list;
